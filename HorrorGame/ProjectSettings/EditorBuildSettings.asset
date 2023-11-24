@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/UI/Scenes/CutsceneBegin.unity
+    guid: 999deadb92db8e54594d5d592680493e
+  - enabled: 1
+    path: Assets/UI/Scenes/Menu.unity
+    guid: 532155996de6ff546a2d3386f5977140
+  - enabled: 1
+    path: Assets/UI/Scenes/LoadScene.unity
+    guid: d77065c4833b9ef43ae976f156573404
+  - enabled: 1
+    path: Assets/Scenes/CutSceneToPlay.unity
+    guid: 229bdd3970e6d72448eef1a5d57cae5b
+  - enabled: 1
+    path: Assets/Scenes/Scene1.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Scene2.unity
+    guid: 0c61e619e9d24124b9b9c9c55f167657
+  - enabled: 1
+    path: Assets/Scenes/EndingScene.unity
+    guid: 3c22c6286cb9b684faab0445c0afc34e
+  m_configObjects: {}

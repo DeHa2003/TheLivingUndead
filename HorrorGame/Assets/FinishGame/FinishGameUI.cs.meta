@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: f30c8dbed8b2e43499e5a12633989b13
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - FailGamePanel: {fileID: 4667646366163259704, guid: ac02b1337d5973f428f210d91e279f34, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
