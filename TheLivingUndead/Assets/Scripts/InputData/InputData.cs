@@ -22,6 +22,8 @@ public class InputData : MonoBehaviour
     public event Action<float, float> OnRotate;
 
     public event Action OnCrouch;
+    public event Action OnStartRun;
+    public event Action OnStopRun;
     public event Action OnJump;
 
     //-----------------------------//
@@ -58,5 +60,8 @@ public class InputData : MonoBehaviour
         if (Input.GetMouseButtonUp(0)) OnEndFire?.Invoke();
 
         OnMouseScroll?.Invoke(Input.GetAxis("Mouse ScrollWheel"));
+
+        if (Input.GetKeyDown(KeyCode.Space)) OnStartRun?.Invoke();
+        if (Input.GetKeyUp(KeyCode.Space)) OnStopRun?.Invoke();
     }
 }

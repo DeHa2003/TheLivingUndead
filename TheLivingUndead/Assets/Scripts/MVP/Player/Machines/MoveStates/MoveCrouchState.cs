@@ -25,7 +25,7 @@ public class MoveCrouchState : IMoveState
 
         inputData.OnCrouch += ActivateWalkState;
 
-        moveModel.SetMoveType(MoveType.Crouch);
+        moveModel.SetMoveType(PlayerMoveType.Crouch);
         moveModel.SetMoveSpeed(1f);
         moveModel.SetRotateSpeed(1f);
     }

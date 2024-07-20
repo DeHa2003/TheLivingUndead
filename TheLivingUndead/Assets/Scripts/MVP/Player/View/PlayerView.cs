@@ -21,7 +21,7 @@ public class PlayerView : MonoBehaviour
 
     public void SetRotateSpeed(float speed) => moveView.SetRotateSpeed(speed);
 
-    public void SetMoveType(MoveType moveType) => animationView.SetMoveType(moveType);
+    public void SetMoveType(PlayerMoveType moveType) => animationView.SetMoveType(moveType);
 
 
     public void StartAim() 

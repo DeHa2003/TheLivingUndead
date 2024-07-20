@@ -5,6 +5,7 @@ using UnityEngine;
 public class ZombieView : MonoBehaviour
 {
     [SerializeField] private ZombieMoveView moveView;
+    [SerializeField] private ZombieAnimationView animationView;
     public Transform ZombieTransform { get { return moveView.ZombieTransform; } }
 
     public void MoveTo(Vector3 vector)
@@ -22,8 +23,13 @@ public class ZombieView : MonoBehaviour
         moveView.SetMoveSpeed(speed);
     }
 
+    public void SetMoveType(ZombieMoveType moveType)
+    {
+        animationView.SetMoveType(moveType);
+    }
+
     public void Attack()
     {
-
+        animationView.Attack();
     }
 }

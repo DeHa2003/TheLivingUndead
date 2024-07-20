@@ -24,8 +24,9 @@ public class MoveWalkState : IMoveState
         inputData.OnJump += moveModel.SetJump;
 
         inputData.OnCrouch += ActivateCrouchState;
+        inputData.OnStartRun += ActivateRunState;
 
-        moveModel.SetMoveType(MoveType.Walk);
+        moveModel.SetMoveType(PlayerMoveType.Walk);
         moveModel.SetMoveSpeed(1.6f);
         moveModel.SetRotateSpeed(1f);
     }
@@ -44,5 +45,10 @@ public class MoveWalkState : IMoveState
     private void ActivateCrouchState()
     {
         moveMachine.SetMoveState(moveMachine.GetMoveState<MoveCrouchState>());
+    }
+
+    private void ActivateRunState()
+    {
+        moveMachine.SetMoveState(moveMachine.GetMoveState<MoveRunState>());
     }
 }

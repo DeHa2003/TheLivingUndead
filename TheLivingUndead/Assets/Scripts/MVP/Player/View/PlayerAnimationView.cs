@@ -11,9 +11,12 @@ public class PlayerAnimationView : MonoBehaviour
     private const string AIM = "Aiming";
     private const string FIRE = "Fire";
     private const string RELOAD = "Reload";
+
     private const string WALK_PARAM = "Walking";
+    private const string RUN_PARAM = "Running";
     private const string CROUCH_PARAM = "Crouching";
-    private List<string> moveParams = new List<string> { WALK_PARAM, CROUCH_PARAM };
+
+    private List<string> moveParams = new List<string> { WALK_PARAM, CROUCH_PARAM, RUN_PARAM };
     private List<string> weapomParams = new List<string> { AIM, FIRE };
 
     private WeaponAnimationsConstraints currentWeaponsConstraints;
@@ -26,15 +29,20 @@ public class PlayerAnimationView : MonoBehaviour
         animator.SetFloat("vInput", inputZ);
     }
 
-    public void SetMoveType(MoveType moveType)
+    public void SetMoveType(PlayerMoveType moveType)
     {
         switch (moveType)
         {
-            case MoveType.Walk:
+            case PlayerMoveType.Walk:
                 SetMovementState(WALK_PARAM);
                 break;
-            case MoveType.Crouch:
+
+            case PlayerMoveType.Crouch:
                 SetMovementState(CROUCH_PARAM);
+                break;
+
+            case PlayerMoveType.Run:
+                SetMovementState(RUN_PARAM);
                 break;
         }
     }

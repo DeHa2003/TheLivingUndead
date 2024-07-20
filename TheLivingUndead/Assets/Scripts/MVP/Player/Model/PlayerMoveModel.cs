@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerMoveModel : MonoBehaviour
 {
-    public event Action<MoveType> OnMoveType;
+    public event Action<PlayerMoveType> OnMoveType;
     public event Action<float, float> OnMove;
     public event Action<float, float> OnRotate;
 
@@ -14,7 +14,7 @@ public class PlayerMoveModel : MonoBehaviour
     public event Action<float> OnSpeedMove;
     public event Action OnJump;
 
-    public void SetMoveType(MoveType moveType) => OnMoveType?.Invoke(moveType);
+    public void SetMoveType(PlayerMoveType moveType) => OnMoveType?.Invoke(moveType);
     public void SetMove(float inputX, float inputZ) => OnMove?.Invoke(inputX, inputZ);
 
     public void SetRotate(float mouseX, float mouseY) => OnRotate?.Invoke(mouseX, mouseY);

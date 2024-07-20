@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 387767928135605355}
   - component: {fileID: 1825552125326095821}
   - component: {fileID: 5842639683111728250}
+  - component: {fileID: 7137806137133191206}
   m_Layer: 0
   m_Name: ZombiePrefab_1
   m_TagString: Zombi
@@ -48,11 +49,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387767928135605350}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 271a3b9cb91f7514287a4d0b46b0b431, type: 2}
+  m_Avatar: {fileID: 9000000, guid: fb4d804d73b657c40b8c4caf74d6225a, type: 2}
+  m_Controller: {fileID: 9100000, guid: dd77fbf0fcbf3dd438df81b1cada8814, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -78,7 +79,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1825552125326095821
@@ -94,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveView: {fileID: 5842639683111728250}
+  animationView: {fileID: 7137806137133191206}
 --- !u!114 &5842639683111728250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +110,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 387767928135605355}
   zombieTransform: {fileID: 1020751740787459804}
+--- !u!114 &7137806137133191206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387767928135605350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f884db23b144e14588eedbb25966768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3958556715963908686}
 --- !u!1 &479010680648646461
 GameObject:
   m_ObjectHideFlags: 0

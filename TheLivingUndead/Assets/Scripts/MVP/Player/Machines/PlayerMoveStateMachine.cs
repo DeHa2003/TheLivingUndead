@@ -20,9 +20,10 @@ public class PlayerMoveStateMachine
     public void Initialize()
     {
         moveStates[typeof(MoveWalkState)] = new MoveWalkState(moveModel, inputData, this);
+        moveStates[typeof(MoveRunState)] = new MoveRunState(moveModel, inputData, this);
         moveStates[typeof(MoveCrouchState)] = new MoveCrouchState(moveModel, inputData, this);
 
-        SetMoveState(GetMoveState<MoveCrouchState>());
+        SetMoveState(GetMoveState<MoveWalkState>());
     }
 
     public void SetMoveState(IMoveState moveState)

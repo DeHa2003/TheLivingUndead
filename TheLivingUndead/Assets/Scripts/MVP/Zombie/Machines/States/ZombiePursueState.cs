@@ -6,12 +6,12 @@ public class ZombiePursueState : IZombieState
 {
     private IZombieStateSwitcher stateSwitcher;
     private ZombieMoveModel zombieMoveModel;
-    private ZombieTargets zombieTargets;
+    private IZombieTargetsReader zombieTargets;
     private Transform currentTarget;
 
     private IEnumerator findTarget;
 
-    public ZombiePursueState(IZombieStateSwitcher stateSwitcher, ZombieMoveModel zombieMoveModel, ZombieTargets zombieTargets)
+    public ZombiePursueState(IZombieStateSwitcher stateSwitcher, ZombieMoveModel zombieMoveModel, IZombieTargetsReader zombieTargets)
     {
         this.stateSwitcher = stateSwitcher;
         this.zombieTargets = zombieTargets;
@@ -22,6 +22,9 @@ public class ZombiePursueState : IZombieState
     {
         Debug.Log("Активация состояния - PURSUE");
         ActivateFindTarget();
+
+        zombieMoveModel.SetMoveType(ZombieMoveType.Run);
+        zombieMoveModel.SetMoveSpeed(3f);
     }
 
     public void ExitState()
@@ -37,35 +40,36 @@ public class ZombiePursueState : IZombieState
 
     public void ActivateFindTarget()
     {
-        if (findTarget != null)
-            Coroutines.StartCoroutine_(findTarget);
-
         Coroutines.StartCoroutine_(findTarget = FindTarget_Coroutine());
     }
 
     public void DeactivateFindTarget()
     {
-        if (findTarget != null)
-            Coroutines.StopCoroutine_(findTarget);
+        if(findTarget != null)
+        Coroutines.StopCoroutine_(findTarget);
     }
 
     private IEnumerator FindTarget_Coroutine()
     {
         while (true)
         {
-
             var zombiePosition = zombieMoveModel.Transform.position;
+
             currentTarget = zombieTargets.GetNearestTarget(zombiePosition);
 
-            var distance = Vector3.Distance(zombiePosition, currentTarget.position);
+            if(currentTarget != null)
+            {
+                var distance = Vector3.Distance(zombiePosition, currentTarget.position);
+                Debug.Log(distance);
 
-            if (distance >= 15)
-                ActivateIdleState();
+                if (distance > 30)
+                    ActivateIdleState();
 
-            if (distance < 2)
-                ActivateAttack();
+                if (distance < 2)
+                    ActivateAttack();
+            }
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 

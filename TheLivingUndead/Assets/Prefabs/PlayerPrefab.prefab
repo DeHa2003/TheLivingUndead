@@ -993,7 +993,7 @@ MonoBehaviour:
   playerTransform: {fileID: 2065149577901147694}
   mask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 8
   speedMove: 0
   speedRotate: 0
 --- !u!114 &5282981438690090094

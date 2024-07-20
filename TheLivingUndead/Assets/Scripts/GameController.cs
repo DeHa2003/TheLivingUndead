@@ -28,5 +28,14 @@ public class GameController : MonoBehaviour
         playerPresenter.Initialize();
 
         zombieSpawner.SpawnRandomZombieInRandomPosition();
+        zombieSpawner.SpawnRandomZombieInRandomPosition();
+        zombieSpawner.SpawnRandomZombieInRandomPosition();
+        zombieSpawner.SpawnRandomZombieInRandomPosition();
+        zombieSpawner.SpawnRandomZombieInRandomPosition();
+    }
+
+    private void OnDestroy()
+    {
+        //zombieSpawner.Destroy();
     }
 }

@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class ZombieIdleState : IZombieState
 {
-
     private IZombieStateSwitcher stateSwitcher;
-    private ZombieTargets zombieTargets;
     private ZombieMoveModel zombieMoveModel;
-    private NavMeshPointGenerator pointGenerator;
-
-    private Vector3 randomPoint;
+    private IZombieTargetsReader zombieTargets;
+    private Transform currentTarget;
 
     private IEnumerator findTarget;
-    private IEnumerator findRandomMoveTarget;
+    private IEnumerator activateWander;
 
-    public ZombieIdleState(IZombieStateSwitcher zombieStateSwitcher, ZombieMoveModel zombieMoveModel, ZombieTargets zombieTargets)
+    public ZombieIdleState(IZombieStateSwitcher stateSwitcher, ZombieMoveModel zombieModel, IZombieTargetsReader zombieTargets)
     {
-        this.stateSwitcher = zombieStateSwitcher;
-        this.zombieMoveModel = zombieMoveModel;
+        this.stateSwitcher = stateSwitcher;
+        this.zombieMoveModel = zombieModel;
         this.zombieTargets = zombieTargets;
     }
 
@@ -26,47 +23,44 @@ public class ZombieIdleState : IZombieState
     {
         Debug.Log("Активация состояния - IDLE");
         ActivateFindTarget();
-        ActivateFindRandomMovePoint();
+        ActivateCoroutineToWander();
+
+        zombieMoveModel.SetMoveSpeed(0);
     }
 
     public void ExitState()
     {
         Debug.Log("Деактивация состояния - IDLE");
         DeactivateFindTarget();
-        DeactivateFindRandomMovePoint();
+        DeactivateCoroutineToWander();
     }
 
     public void UpdateState()
     {
-        zombieMoveModel.MoveTo(randomPoint);
+
     }
 
-    private void ActivateFindTarget()
+    public void ActivateFindTarget()
     {
-        if (findTarget != null)
-            Coroutines.StopCoroutine_(findTarget);
-
         Coroutines.StartCoroutine_(findTarget = FindTarget_Coroutine());
     }
 
-    private void DeactivateFindTarget()
+    public void DeactivateFindTarget()
     {
         if(findTarget != null)
-           Coroutines.StopCoroutine_(findTarget);
+        Coroutines.StopCoroutine_(findTarget);
     }
 
-    private void ActivateFindRandomMovePoint()
+    private void ActivateCoroutineToWander()
     {
-        if (findRandomMoveTarget != null)
-            Coroutines.StopCoroutine_(findRandomMoveTarget);
-
-        Coroutines.StartCoroutine_(findRandomMoveTarget = FindRandonPoint_Coroutine());
+        float random = Random.Range(2, 10);
+        Coroutines.StartCoroutine_(activateWander = ActivateWander(random));
     }
 
-    private void DeactivateFindRandomMovePoint()
+    private void DeactivateCoroutineToWander()
     {
-        if (findRandomMoveTarget != null)
-            Coroutines.StopCoroutine_(findRandomMoveTarget);
+        if(activateWander != null)
+        Coroutines.StopCoroutine_(activateWander);
     }
 
     private IEnumerator FindTarget_Coroutine()
@@ -74,30 +68,31 @@ public class ZombieIdleState : IZombieState
         while (true)
         {
             var zombiePosition = zombieMoveModel.Transform.position;
-            var currentTarget = zombieTargets.GetNearestTarget(zombiePosition);
-
-            if (currentTarget != null)
+            currentTarget = zombieTargets.GetNearestTarget(zombiePosition);
+            
+            if(currentTarget != null)
             {
                 var distance = Vector3.Distance(zombiePosition, currentTarget.position);
+                Debug.Log(distance);
 
-                if (distance < 100)
+                if (distance <= 30)
                     ActivatePursueState();
             }
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 
-    private IEnumerator FindRandonPoint_Coroutine()
+    private IEnumerator ActivateWander(float time)
     {
-        var distance = Vector3.Distance(zombieMoveModel.Transform.position, randomPoint);
+        yield return new WaitForSeconds(time);
+        ActivateWanderState();
 
-        if(distance < 3)
-        {
-            randomPoint = pointGenerator.GetRandomPointInRadius(zombieMoveModel.Transform.position, 30);
-        }
+    }
 
-        yield return new WaitForSeconds(2);
+    private void ActivateWanderState()
+    {
+        stateSwitcher.SetZombieState(stateSwitcher.GetZombieState<ZombieWanderState>());
     }
 
     private void ActivatePursueState()

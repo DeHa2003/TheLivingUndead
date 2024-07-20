@@ -25,6 +25,9 @@ public class ZombiePresenter
         zombieModel.MoveModel.OnMoveTo += zombieView.MoveTo;
         zombieModel.MoveModel.OnRotateTo += zombieView.RotateTo;
         zombieModel.MoveModel.OnSetMoveSpeed += zombieView.SetMoveSpeed;
+        zombieModel.MoveModel.OnMoveType += zombieView.SetMoveType;
+
+        zombieModel.ActionModel.OnAttack += zombieView.Attack;
     }
 
     private void DeactivateEvents()
@@ -32,10 +35,21 @@ public class ZombiePresenter
         zombieModel.MoveModel.OnMoveTo -= zombieView.MoveTo;
         zombieModel.MoveModel.OnRotateTo -= zombieView.RotateTo;
         zombieModel.MoveModel.OnSetMoveSpeed -= zombieView.SetMoveSpeed;
+        zombieModel.MoveModel.OnMoveType -= zombieView.SetMoveType;
+
+        zombieModel.ActionModel.OnAttack -= zombieView.Attack;
     }
 
     public void Update()
     {
         zombieMachine.UpdateState();
+    }
+
+    public void Destroy()
+    {
+        //Object.Destroy(zombieView);
+        //zombieMachine.Destroy();
+
+        DeactivateEvents();
     }
 }

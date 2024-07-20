@@ -7,12 +7,13 @@ public class ZombieInstaller : MonoInstaller
     [SerializeField] private ZombieTargets zombieTargets;
     [SerializeField] private ZombieSpawnPoints zombieSpawnPoints;
     [SerializeField] private ZombiePrefabs zombiePrefabs;
+    [SerializeField] private NavMeshPointGenerator pointGenerator;
 
     public override void InstallBindings()
     {
         Container.BindInterfacesAndSelfTo<ZombieSpawner>().
             AsSingle().
-            WithArguments(zombiePrefabs, zombieTargets, zombieSpawnPoints);
+            WithArguments(zombiePrefabs, zombieTargets, zombieSpawnPoints, pointGenerator);
 
         Container.Bind<ZombieTargets>().
             FromInstance(zombieTargets).
@@ -24,6 +25,10 @@ public class ZombieInstaller : MonoInstaller
 
         Container.Bind<ZombiePrefabs>().
             FromInstance(zombiePrefabs).
+            AsSingle();
+
+        Container.Bind<NavMeshPointGenerator>().
+            FromInstance(pointGenerator).
             AsSingle();
 
         //Container.BindInterfacesAndSelfTo<ZombieMove_Property>().

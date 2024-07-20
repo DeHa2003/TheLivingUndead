@@ -7,7 +7,7 @@ public class ZombieDieState : IZombieState
 
     public void EnterState()
     {
-
+        Debug.Log("Активация состояния - DIE");
     }
 
     public void ExitState()
