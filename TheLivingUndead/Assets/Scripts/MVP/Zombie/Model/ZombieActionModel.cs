@@ -6,8 +6,8 @@ using UnityEngine;
 public class ZombieActionModel : MonoBehaviour
 {
     public Action OnStartAttack;
-    public Action OnAttack;
     public Action OnEndAttack;
+    public Action OnAttack;
     public Action OnDie;
 
     public void StartAttack()
@@ -15,14 +15,15 @@ public class ZombieActionModel : MonoBehaviour
         OnStartAttack?.Invoke();
     }
 
-    public void Attack()
-    {
-        OnAttack?.Invoke();
-    }
-
     public void EndAttack()
     {
         OnEndAttack?.Invoke();
+    }
+
+
+    public void Attack()
+    {
+        OnAttack?.Invoke();
     }
 
     public void Die()

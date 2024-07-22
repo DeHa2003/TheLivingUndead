@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerView : MonoBehaviour
+public class PlayerView : MonoBehaviour, ITarget
 {
+    [SerializeField] private PlayerCameraView cameraView;
     [SerializeField] private PlayerAnimationView animationView;
     [SerializeField] private PlayerMoveView moveView;
     [SerializeField] private PlayerWeaponView weaponView;
 
+    public Transform Transform => moveView.PlayerTransform;
 
     public void Move(float inputX, float inputZ) 
     {
@@ -22,6 +24,7 @@ public class PlayerView : MonoBehaviour
     public void SetRotateSpeed(float speed) => moveView.SetRotateSpeed(speed);
 
     public void SetMoveType(PlayerMoveType moveType) => animationView.SetMoveType(moveType);
+    public void SetZoom(float FOV, float duration) => cameraView.SetZoom(FOV, duration);
 
 
     public void StartAim() 
@@ -67,5 +70,10 @@ public class PlayerView : MonoBehaviour
     {
         weaponView.SetWeaponData(weaponData);
         animationView.SetWeaponType(weaponData.weaponType);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        Debug.Log("Нанесение урона цели");
     }
 }

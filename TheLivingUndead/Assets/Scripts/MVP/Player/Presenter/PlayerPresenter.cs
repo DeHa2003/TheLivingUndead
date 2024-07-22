@@ -53,6 +53,8 @@ public class PlayerPresenter
         playerModel.WeaponModel.OnEndFire += playerView.EndFire;
         playerModel.WeaponModel.OnStartReload += playerView.StartReload;
         playerModel.WeaponModel.OnEndReload += playerView.EndReload;
+
+        playerModel.WeaponModel.OnSetZoom += playerView.SetZoom;
     }
 
     public void DeacrivateEvents()
@@ -71,5 +73,7 @@ public class PlayerPresenter
         playerModel.WeaponModel.OnEndFire -= playerView.EndFire;
         playerModel.WeaponModel.OnStartReload -= playerView.StartReload;
         playerModel.WeaponModel.OnEndReload -= playerView.EndReload;
+
+        playerModel.WeaponModel.OnSetZoom -= playerView.SetZoom;
     }
 }

@@ -37,6 +37,11 @@ public class PlayerPistolWeaponState : IWeaponState
             EndReload();
         }
 
+        if (isAiming)
+        {
+            EndAim();
+        }
+
         inputData.OnStartAim -= StartAim;
         inputData.OnEndAim -= EndAim;
         inputData.OnStartFire -= StartFire;
@@ -46,17 +51,21 @@ public class PlayerPistolWeaponState : IWeaponState
     private void StartAim()
     {
         isAiming = true;
+        playerWeaponModel.SetZoom(35, 0.2f);
         playerWeaponModel.StartAim();
     }
 
     private void EndAim()
     {
         isAiming = false;
+        playerWeaponModel.SetZoom(40, 0.2f);
         playerWeaponModel.EndAim();
     }
 
     private void StartFire()
     {
+        if (!isAiming && isReload) return;
+
         isShooting = true;
         playerWeaponModel.StartFire();
 

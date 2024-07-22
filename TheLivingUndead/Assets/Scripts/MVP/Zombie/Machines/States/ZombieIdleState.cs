@@ -7,7 +7,7 @@ public class ZombieIdleState : IZombieState
     private IZombieStateSwitcher stateSwitcher;
     private ZombieMoveModel zombieMoveModel;
     private IZombieTargetsReader zombieTargets;
-    private Transform currentTarget;
+    private ITarget currentTarget;
 
     private IEnumerator findTarget;
     private IEnumerator activateWander;
@@ -72,7 +72,7 @@ public class ZombieIdleState : IZombieState
             
             if(currentTarget != null)
             {
-                var distance = Vector3.Distance(zombiePosition, currentTarget.position);
+                var distance = Vector3.Distance(zombiePosition, currentTarget.Transform.position);
                 Debug.Log(distance);
 
                 if (distance <= 30)

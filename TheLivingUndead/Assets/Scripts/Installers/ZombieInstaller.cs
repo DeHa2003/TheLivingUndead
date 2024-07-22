@@ -15,7 +15,7 @@ public class ZombieInstaller : MonoInstaller
             AsSingle().
             WithArguments(zombiePrefabs, zombieTargets, zombieSpawnPoints, pointGenerator);
 
-        Container.Bind<ZombieTargets>().
+        Container.BindInterfacesAndSelfTo<ZombieTargets>().
             FromInstance(zombieTargets).
             AsSingle();
 

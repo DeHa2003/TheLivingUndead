@@ -15,6 +15,8 @@ public class PlayerWeaponModel
     public event Action OnStartReload;
     public event Action OnEndReload;
 
+    public event Action<float, float> OnSetZoom;
+
     //private WeaponData currentWeaponData;
 
     //private bool isAiming = false;
@@ -123,6 +125,11 @@ public class PlayerWeaponModel
         //OnSetWeaponData?.Invoke(currentWeaponData);
 
         OnSetWeaponData?.Invoke(weaponData);
+    }
+
+    public void SetZoom(float FOV, float duration)
+    {
+        OnSetZoom?.Invoke(FOV, duration);
     }
 
     //protected IEnumerator ShootingCoroutine()

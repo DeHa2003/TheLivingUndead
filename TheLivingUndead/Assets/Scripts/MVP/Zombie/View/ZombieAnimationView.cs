@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ZombieAnimationView : MonoBehaviour
 {
+    public event Action OnAnimationAttackEvent;
+
     [SerializeField] private Animator animator;
 
     private const string ATTACK = "Attack";
@@ -26,9 +28,21 @@ public class ZombieAnimationView : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public void AttackSignal()
     {
-        
+        OnAnimationAttackEvent?.Invoke();
+    }
+
+    public void StartAttack()
+    {
+        animator.SetLayerWeight(1, 1);
+        animator.SetBool(ATTACK, true);
+    }
+
+    public void EndAttack()
+    {
+        animator.SetBool(ATTACK, false);
+        animator.SetLayerWeight(1, 0);
     }
 
     private void SetMovementState(string name)

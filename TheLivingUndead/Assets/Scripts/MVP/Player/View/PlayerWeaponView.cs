@@ -9,12 +9,13 @@ public class PlayerWeaponView : MonoBehaviour
     [SerializeField] private AudioClip clipReload;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Transform rightHand;
-    private GameObject weapon;
+
+    private SimpleShoot weapon;
     public void SetWeaponData(WeaponData weaponData)
     {
         if(weapon != null)
         {
-            Destroy(weapon);
+            Destroy(weapon.gameObject);
         }
 
         weapon = Instantiate(weaponData.weaponPrefab, rightHand);
@@ -31,6 +32,7 @@ public class PlayerWeaponView : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             Instantiate(effect, hit.point, Quaternion.identity);
+            weapon.Shoot();
         }
     }
 

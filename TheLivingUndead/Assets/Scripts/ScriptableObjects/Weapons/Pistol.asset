@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponName: "\u041F\u0438\u0441\u0442\u043E\u043B\u0435\u0442 \u043E\u0431\u044B\u0447\u043D\u044B\u0439"
-  weaponPrefab: {fileID: 4210100720165400533, guid: 87e308cb23eea97419b3c2623d8bb3fa, type: 3}
+  weaponPrefab: {fileID: 5664900892816847173, guid: 6512fe6008bac9442ad3ebb4313ca49b, type: 3}
   weaponType: 1
   weaponPosition: {x: 0.008, y: 0.078, z: 0.008}
   weaponRotation: {x: 291.37103, y: 10.762456, z: 80.25491}
   weaponSpeedShoot: 0.3
   weaponMaxBullets: 15
-  weapomCurrentBullet: 15
+  weaponCurrentBullet: 13
   weaponDamage: 0
   weaponTimeReload: 2.3

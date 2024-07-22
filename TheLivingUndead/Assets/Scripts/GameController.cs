@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerView playerViewPrefab;
     [SerializeField] private WeaponInventory weaponInventory;
 
+    [Inject] private IZombieTargetsWriter zombieTargets;
     [Inject] private ZombieSpawner zombieSpawner;
 
     private PlayerPresenter playerPresenter;
@@ -26,11 +27,8 @@ public class GameController : MonoBehaviour
             new PlayerMoveStateMachine(playerMoveModel, inputData),
             new PlayerWeaponStateMachine(playerWeaponModel, weaponInventory, inputData));
         playerPresenter.Initialize();
+        zombieTargets.AddTarget(playerView);
 
-        zombieSpawner.SpawnRandomZombieInRandomPosition();
-        zombieSpawner.SpawnRandomZombieInRandomPosition();
-        zombieSpawner.SpawnRandomZombieInRandomPosition();
-        zombieSpawner.SpawnRandomZombieInRandomPosition();
         zombieSpawner.SpawnRandomZombieInRandomPosition();
     }
 

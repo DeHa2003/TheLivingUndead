@@ -38,6 +38,7 @@ public class MoveWalkState : IMoveState
         inputData.OnJump -= moveModel.SetJump;
 
         inputData.OnCrouch -= ActivateCrouchState;
+        inputData.OnStartRun -= ActivateRunState;
 
         Debug.Log("Деактивация состояния - WALK");
     }

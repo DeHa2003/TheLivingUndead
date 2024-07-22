@@ -22,22 +22,28 @@ public class ZombiePresenter
 
     private void ActivateEvents()
     {
+        zombieView.OnAttack += zombieModel.ActionModel.Attack;
+
         zombieModel.MoveModel.OnMoveTo += zombieView.MoveTo;
         zombieModel.MoveModel.OnRotateTo += zombieView.RotateTo;
         zombieModel.MoveModel.OnSetMoveSpeed += zombieView.SetMoveSpeed;
         zombieModel.MoveModel.OnMoveType += zombieView.SetMoveType;
 
-        zombieModel.ActionModel.OnAttack += zombieView.Attack;
+        zombieModel.ActionModel.OnStartAttack += zombieView.StartAttack;
+        zombieModel.ActionModel.OnEndAttack += zombieView.EndAttack;
     }
 
     private void DeactivateEvents()
     {
+        zombieView.OnAttack -= zombieModel.ActionModel.Attack;
+
         zombieModel.MoveModel.OnMoveTo -= zombieView.MoveTo;
         zombieModel.MoveModel.OnRotateTo -= zombieView.RotateTo;
         zombieModel.MoveModel.OnSetMoveSpeed -= zombieView.SetMoveSpeed;
         zombieModel.MoveModel.OnMoveType -= zombieView.SetMoveType;
 
-        zombieModel.ActionModel.OnAttack -= zombieView.Attack;
+        zombieModel.ActionModel.OnStartAttack -= zombieView.StartAttack;
+        zombieModel.ActionModel.OnEndAttack -= zombieView.EndAttack;
     }
 
     public void Update()

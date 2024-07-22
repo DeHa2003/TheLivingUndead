@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMoveView : MonoBehaviour
 {
+    public Transform PlayerTransform { get { return playerTransform; } }
+
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Transform followTransform;
     [SerializeField] private Transform aimTransform;

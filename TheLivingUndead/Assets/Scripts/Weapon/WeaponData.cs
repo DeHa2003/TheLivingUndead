@@ -6,7 +6,7 @@ using UnityEngine;
 public class WeaponData : ScriptableObject
 {
     public string weaponName;
-    public GameObject weaponPrefab;
+    public SimpleShoot weaponPrefab;
     public WeaponType weaponType;
     public Vector3 weaponPosition;
     public Vector3 weaponRotation;

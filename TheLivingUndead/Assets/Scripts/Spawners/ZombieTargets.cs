@@ -3,34 +3,34 @@ using UnityEngine;
 
 public class ZombieTargets : MonoBehaviour, IZombieTargetsWriter, IZombieTargetsReader
 {
-    [SerializeField] private List<Transform> zombieTargets = new List<Transform>();
+    [SerializeField] private List<ITarget> zombieTargets = new List<ITarget>();
 
-    public IEnumerable<Transform> Targets()
+    public IEnumerable<ITarget> Targets()
     {
         return zombieTargets.AsReadOnly();
     }
 
-    public void AddTarget(Transform target)
+    public void AddTarget(ITarget target)
     {
-        throw new System.NotImplementedException();
+        zombieTargets.Add(target);
     }
 
-    public void RemoveTarget(Transform target)
+    public void RemoveTarget(ITarget target)
     {
-        throw new System.NotImplementedException();
+        zombieTargets.Remove(target);
     }
 
-    public Transform GetNearestTarget(Vector3 zombiePosition)
+    public ITarget GetNearestTarget(Vector3 zombiePosition)
     {
         if (zombieTargets.Count == 0) return null;
 
         var distance = Mathf.Infinity;
 
-        Transform currentTarget = null;
+        ITarget currentTarget = null;
 
-        foreach (Transform player in zombieTargets)
+        foreach (ITarget player in zombieTargets)
         {
-            float distance_ = Vector3.Distance(zombiePosition, player.position);
+            float distance_ = Vector3.Distance(zombiePosition, player.Transform.position);
 
             if (distance_ < distance)
             {
@@ -45,12 +45,12 @@ public class ZombieTargets : MonoBehaviour, IZombieTargetsWriter, IZombieTargets
 
 public interface IZombieTargetsWriter
 {
-    void AddTarget(Transform target);
-    void RemoveTarget(Transform target);
+    void AddTarget(ITarget target);
+    void RemoveTarget(ITarget target);
 }
 
 public interface IZombieTargetsReader
 {
-    IEnumerable<Transform> Targets();
-    public Transform GetNearestTarget(Vector3 zombiePosition);
+    IEnumerable<ITarget> Targets();
+    public ITarget GetNearestTarget(Vector3 zombiePosition);
 }

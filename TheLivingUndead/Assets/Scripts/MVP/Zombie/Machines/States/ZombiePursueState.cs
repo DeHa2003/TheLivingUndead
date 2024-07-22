@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombiePursueState : IZombieState
@@ -7,7 +6,7 @@ public class ZombiePursueState : IZombieState
     private IZombieStateSwitcher stateSwitcher;
     private ZombieMoveModel zombieMoveModel;
     private IZombieTargetsReader zombieTargets;
-    private Transform currentTarget;
+    private ITarget currentTarget;
 
     private IEnumerator findTarget;
 
@@ -35,7 +34,7 @@ public class ZombiePursueState : IZombieState
 
     public void UpdateState()
     {
-        zombieMoveModel.MoveTo(currentTarget.position);
+        zombieMoveModel.MoveTo(currentTarget.Transform.position);
     }
 
     public void ActivateFindTarget()
@@ -59,13 +58,13 @@ public class ZombiePursueState : IZombieState
 
             if(currentTarget != null)
             {
-                var distance = Vector3.Distance(zombiePosition, currentTarget.position);
-                Debug.Log(distance);
+                var distance = Vector3.Distance(zombiePosition, currentTarget.Transform.position);
+                //Debug.Log(distance);
 
                 if (distance > 30)
                     ActivateIdleState();
 
-                if (distance < 2)
+                if (distance < 1.5f)
                     ActivateAttack();
             }
 

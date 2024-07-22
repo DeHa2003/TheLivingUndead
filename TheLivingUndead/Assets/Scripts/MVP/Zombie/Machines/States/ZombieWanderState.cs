@@ -10,7 +10,7 @@ public class ZombieWanderState : IZombieState
 
     private NavMeshPointGenerator pointGenerator;
 
-    private Transform currentTarget;
+    private ITarget currentTarget;
     private Vector3 randomPos;
 
     private IEnumerator wander;
@@ -78,7 +78,7 @@ public class ZombieWanderState : IZombieState
 
             if(currentTarget != null)
             {
-                var distance = Vector3.Distance(zombiePosition, currentTarget.position);
+                var distance = Vector3.Distance(zombiePosition, currentTarget.Transform.position);
                 Debug.Log(distance);
 
                 if (distance <= 30)

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Automat
   m_EditorClassIdentifier: 
   weaponName: AK47 Black
-  weaponPrefab: {fileID: 8036983765008961061, guid: 0efabdf450933444d9283226d836a578, type: 3}
+  weaponPrefab: {fileID: 3880959797393811430, guid: 0f0f75d30cca48f4483a1c456677ca9c, type: 3}
   weaponType: 3
   weaponPosition: {x: -0.0149, y: 0.0801, z: 0.013}
   weaponRotation: {x: 275.18262, y: 274.4455, z: 187.60803}
   weaponSpeedShoot: 0.08
   weaponMaxBullets: 23
-  weapomCurrentBullet: 23
+  weaponCurrentBullet: 21
   weaponDamage: 0
   weaponTimeReload: 2.3

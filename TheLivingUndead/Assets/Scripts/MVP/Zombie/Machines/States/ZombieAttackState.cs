@@ -8,10 +8,11 @@ public class ZombieAttackState : IZombieState
     private ZombieMoveModel zombieMoveModel;
     private ZombieActionModel zombieActionModel;
     private IZombieTargetsReader zombieTargets;
-    private Transform currentTarget;
+    private ITarget currentTarget;
 
     private IEnumerator findTarget;
-
+    private IEnumerator activateAttack;
+    private bool isAttack;
     public ZombieAttackState(IZombieStateSwitcher stateSwitcher, ZombieMoveModel zombieModel, ZombieActionModel zombieActionModel, IZombieTargetsReader zombieTargets)
     {
         this.stateSwitcher = stateSwitcher;
@@ -24,6 +25,7 @@ public class ZombieAttackState : IZombieState
     {
         Debug.Log("Активация состояния - ATTACK");
         ActivateFindTarget();
+        zombieActionModel.OnAttack += Attack;
         zombieActionModel.StartAttack();
     }
 
@@ -31,12 +33,13 @@ public class ZombieAttackState : IZombieState
     {
         Debug.Log("Деактивация состояния - ATTACK");
         DeactivateFindTarget();
+        zombieActionModel.OnAttack -= Attack;
         zombieActionModel.EndAttack();
     }
 
     public void UpdateState()
     {
-        zombieMoveModel.MoveTo(currentTarget.position);
+        zombieMoveModel.MoveTo(currentTarget.Transform.position);
     }
 
     public void ActivateFindTarget()
@@ -60,14 +63,20 @@ public class ZombieAttackState : IZombieState
 
             if(currentTarget != null)
             {
-                var distance = Vector3.Distance(zombiePosition, currentTarget.position);
+                var distance = Vector3.Distance(zombiePosition, currentTarget.Transform.position);
 
-                if (distance >= 2)
+                if (distance >= 1.5f)
                     ActivatePursueState();
             }
 
             yield return new WaitForSeconds(1);
         }
+    }
+
+    private void Attack()
+    {
+        Debug.Log("Получение урона");
+        currentTarget.TakeDamage(10);
     }
 
     private void ActivatePursueState()

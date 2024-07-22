@@ -20,16 +20,16 @@ public class SimpleShoot : MonoBehaviour
     [Tooltip("Bullet Speed")] [SerializeField] private float shotPower = 500f;
     [Tooltip("Casing Ejection Speed")] [SerializeField] private float ejectPower = 150f;
 
-    void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            gunAnimator.SetTrigger("Fire");
-        }
-    }
+    //void Update()
+    //{
+    //    //if (Input.GetButtonDown("Fire1"))
+    //    //{
+    //    //    gunAnimator.SetTrigger("Fire");
+    //    //}
+    //}
 
 
-    void Shoot()
+    public void Shoot()
     {
         if (muzzleFlashPrefab)
         {
@@ -39,10 +39,12 @@ public class SimpleShoot : MonoBehaviour
 
             //Destroy the muzzle flash effect
             Destroy(tempFlash, destroyTimer);
+            CasingRelease();
         }
 
-        if (!bulletPrefab)
-        { return; }
+        gunAnimator.SetTrigger("Fire");
+
+        if (!bulletPrefab) return;
 
         Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
 

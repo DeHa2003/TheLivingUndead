@@ -1,3 +1,5 @@
+using ModestTree.Util;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +7,10 @@ using UnityEngine.Windows;
 
 public class PlayerAnimationView : MonoBehaviour
 {
+    public AudioSource audio;
+    //---------------------------------------//
+    public event Action OnFeet;
+
     [SerializeField] private Animator animator;
     [SerializeField] private WeaponsConstraints weaponsConstraints;
 
@@ -22,6 +28,30 @@ public class PlayerAnimationView : MonoBehaviour
     private WeaponAnimationsConstraints currentWeaponsConstraints;
 
     private int currentIndex = -1;
+
+    public void FeetSignal(string clipName)
+    {
+        //OnFeet?.Invoke();
+        //audio.Play();
+
+        AnimatorClipInfo[] animatorClips = animator.GetCurrentAnimatorClipInfo(0);
+        float maxWeight = 0f;
+        string maxWeightClipName = null;
+
+        foreach(var clipInfo in animatorClips)
+        {
+            if(clipInfo.weight > maxWeight)
+            {
+                maxWeight = clipInfo.weight;
+                maxWeightClipName = clipInfo.clip.name;
+            }
+        }
+
+        if(clipName == maxWeightClipName)
+        {
+            audio.Play();
+        }
+    }
 
     public void Move(float inputX, float inputZ)
     {
