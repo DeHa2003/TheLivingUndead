@@ -31,6 +31,7 @@ public class PlayerAnimationView : MonoBehaviour
 
     public void FeetSignal(string clipName)
     {
+        //Debug.Log(clipName);
         //OnFeet?.Invoke();
         //audio.Play();
 

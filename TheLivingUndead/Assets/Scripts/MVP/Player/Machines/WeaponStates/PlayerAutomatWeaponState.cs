@@ -80,7 +80,7 @@ public class PlayerAutomatWeaponState : IWeaponState
 
     private void Fire()
     {
-        Debug.Log("Выстрел");
+        //Debug.Log("Выстрел");
         playerWeaponModel.Fire();
     }
 

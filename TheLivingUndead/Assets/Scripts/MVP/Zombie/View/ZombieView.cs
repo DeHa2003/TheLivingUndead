@@ -10,6 +10,7 @@ public class ZombieView : MonoBehaviour
         remove { animationView.OnAnimationAttackEvent -= value; } }
 
     [SerializeField] private ZombieMoveView moveView;
+    [SerializeField] private ZombieHealthView zombieHealthView;
     [SerializeField] private ZombieAnimationView animationView;
     public Transform ZombieTransform { get { return moveView.ZombieTransform; } }
 

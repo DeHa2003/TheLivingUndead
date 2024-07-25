@@ -79,7 +79,7 @@ public class ZombieWanderState : IZombieState
             if(currentTarget != null)
             {
                 var distance = Vector3.Distance(zombiePosition, currentTarget.Transform.position);
-                Debug.Log(distance);
+                //Debug.Log(distance);
 
                 if (distance <= 30)
                     ActivatePursueState();

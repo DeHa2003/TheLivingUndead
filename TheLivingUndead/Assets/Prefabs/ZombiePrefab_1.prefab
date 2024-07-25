@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveView: {fileID: 5842639683111728250}
+  zombieHealthView: {fileID: 2880404804552493183}
   animationView: {fileID: 7137806137133191206}
 --- !u!114 &5842639683111728250
 MonoBehaviour:
@@ -2175,7 +2176,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000017136335, y: 0.26271167, z: -0.000000022351742}
+  m_ConnectedAnchor: {x: 0.000000037252903, y: 0.26271263, z: -0.000000014901161}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -3543,7 +3544,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.24728358, y: 0.42044014, z: -0.1255898}
+  m_ConnectedAnchor: {x: -0.24728262, y: 0.42044014, z: -0.12558986}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -4003,6 +4004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9160297665208251188}
+  - component: {fileID: 2880404804552493183}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -4025,3 +4027,35 @@ Transform:
   m_Father: {fileID: 9160297664761895775}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2880404804552493183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160297665208251189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eddb9e5ab8dedb543ad5dcbe6b5ed73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPartConfigs:
+  - bodyPart: 0
+    bodyPartTransforms:
+    - {fileID: 6484446551801836047}
+    - {fileID: 8032039484904234958}
+  - bodyPart: 1
+    bodyPartTransforms:
+    - {fileID: 6549768768068992562}
+    - {fileID: 3040941131113338015}
+  - bodyPart: 2
+    bodyPartTransforms:
+    - {fileID: 3036729998888591156}
+    - {fileID: 7682696437989263338}
+  - bodyPart: 3
+    bodyPartTransforms:
+    - {fileID: 8718884620974838135}
+    - {fileID: 5017593800594616301}
+  - bodyPart: 4
+    bodyPartTransforms:
+    - {fileID: 6361020819756979295}
