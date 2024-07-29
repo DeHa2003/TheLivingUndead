@@ -2,18 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class ZombieAnimationView : MonoBehaviour
 {
-    public event Action OnAnimationAttackEvent;
-
+    [SerializeField] private RigBuilder rigBuilder;
     [SerializeField] private Animator animator;
 
     private const string ATTACK = "Attack";
 
     private const string WALK = "Walking";
     private const string RUN = "Running";
-    private List<string> moveParams = new List<string> { WALK, RUN };
+    private const string RISE = "Rise";
+    private const string DIE = "Die";
+    private List<string> moveParams = new List<string> { WALK, RUN, RISE ,DIE };
 
     public void SetMoveType(ZombieMoveType zombieMoveType)
     {
@@ -28,11 +30,6 @@ public class ZombieAnimationView : MonoBehaviour
         }
     }
 
-    public void AttackSignal()
-    {
-        OnAnimationAttackEvent?.Invoke();
-    }
-
     public void StartAttack()
     {
         animator.SetLayerWeight(1, 1);
@@ -43,6 +40,23 @@ public class ZombieAnimationView : MonoBehaviour
     {
         animator.SetBool(ATTACK, false);
         animator.SetLayerWeight(1, 0);
+    }
+
+    public void Destroy()
+    {
+        Destroy(rigBuilder);
+        Destroy(animator);
+        Destroy(gameObject);
+    }
+
+    public void Rise()
+    {
+        SetMovementState(RISE);
+    }
+
+    public void ActivateAnimator(bool activate)
+    {
+        animator.enabled = activate;
     }
 
     private void SetMovementState(string name)

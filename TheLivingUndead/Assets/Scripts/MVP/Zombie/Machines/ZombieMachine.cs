@@ -31,7 +31,7 @@ public class ZombieMachine : IZombieStateSwitcher
         states[typeof(ZombieWanderState)] = new ZombieWanderState(this, zombieModel.MoveModel, zombieTargets, pointGenerator);
         states[typeof(ZombiePursueState)] = new ZombiePursueState(this, zombieModel.MoveModel, zombieTargets);
         states[typeof(ZombieAttackState)] = new ZombieAttackState(this, zombieModel.MoveModel, zombieModel.ActionModel, zombieTargets);
-        states[typeof(ZombieDieState)] = new ZombieDieState();
+        states[typeof(ZombieDieState)] = new ZombieDieState(zombieModel.MoveModel);
 
         SetZombieState(GetZombieState<ZombieIdleState>());
     }

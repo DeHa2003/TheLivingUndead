@@ -22,13 +22,13 @@ public class ZombieSpawner : ITickable, IDisposable
 
     public void SpawnRandomZombieInPosition(Transform transform)
     {
-        ZombieModel zombieModel = new ZombieModel(new ZombieMoveModel(), new ZombieActionModel());
+        ZombieModel zombieModel = new ZombieModel(new ZombieMoveModel(), new ZombieActionModel(), new ZombieHealthModel(100));
         SpawnZombieInPoint(transform, zombiePrefabs.GetRandomPrefab(), zombieModel, new ZombieMachine(zombieTargets, zombieModel, pointGenerator));
     }
 
     public void SpawnRandomZombieInRandomPosition()
     {
-        ZombieModel zombieModel = new ZombieModel(new ZombieMoveModel(), new ZombieActionModel());
+        ZombieModel zombieModel = new ZombieModel(new ZombieMoveModel(), new ZombieActionModel(), new ZombieHealthModel(100));
         SpawnZombieInPoint(zombieSpawnPoints.GetRandomPoint(), zombiePrefabs.GetRandomPrefab(), zombieModel, new ZombieMachine(zombieTargets, zombieModel, pointGenerator));
     }
 
@@ -52,7 +52,7 @@ public class ZombieSpawner : ITickable, IDisposable
     {
         for (int i = 0; i < zombies.Count; i++)
         {
-            zombies[i].Destroy();
+            //zombies[i].Destroy();
         }
     }
 }

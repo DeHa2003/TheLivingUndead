@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class ZombieDieState : IZombieState
 {
+    private ZombieMoveModel zombieMoveModel;
+
+    public ZombieDieState(ZombieMoveModel zombieMoveModel)
+    {
+        this.zombieMoveModel = zombieMoveModel;
+    }
 
     public void EnterState()
     {
-        Debug.Log("Активация состояния - DIE");
+        zombieMoveModel.SetMoveSpeed(0);
     }
 
     public void ExitState()

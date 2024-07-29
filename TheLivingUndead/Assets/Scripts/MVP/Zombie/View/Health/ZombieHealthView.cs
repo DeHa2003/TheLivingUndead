@@ -1,16 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ZombieHealthView : MonoBehaviour
 {
-    [SerializeField] private BodyPartConfig[] bodyPartConfigs;
+    [SerializeField] private ZombieHealthBarView healthBar;
 
-    private void Start()
+    public void Initialize()
     {
-        foreach(BodyPartConfig config in bodyPartConfigs)
-        {
-            config.Initialize();
-        }
+        healthBar.Initialize();
+    }
+    public void ChangeHealth(float health)
+    {
+        healthBar.SetHealth(health);
+    }
+
+    public void Destroy()
+    {
+        healthBar.Destroy();
+        Destroy(gameObject);
     }
 }

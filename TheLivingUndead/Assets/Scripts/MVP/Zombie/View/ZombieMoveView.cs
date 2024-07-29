@@ -24,4 +24,10 @@ public class ZombieMoveView : MonoBehaviour
     {
         agent.speed = speed;
     }
+
+    public void Destroy()
+    {
+        Destroy(agent);
+        Destroy(gameObject);
+    }
 }

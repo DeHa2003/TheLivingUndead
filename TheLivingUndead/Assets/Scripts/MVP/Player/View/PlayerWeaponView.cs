@@ -34,7 +34,8 @@ public class PlayerWeaponView : MonoBehaviour
             Instantiate(effect, hit.point, Quaternion.identity);
             if(hit.transform.TryGetComponent(out IGetDirectionDamage getDamage))
             {
-                getDamage.TakeDamage(hit.point, ray.direction, 10);
+                getDamage.TakeDirection(hit.point, ray.direction);
+                getDamage.TakeDamage(10);
             }
             weapon.Shoot();
         }

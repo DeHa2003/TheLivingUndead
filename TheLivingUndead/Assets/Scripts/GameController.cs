@@ -15,21 +15,23 @@ public class GameController : MonoBehaviour
     private PlayerPresenter playerPresenter;
     private void Start()
     {
-        var playerView = Instantiate(playerViewPrefab, Vector3.zero, Quaternion.identity);
+        //var playerView = Instantiate(playerViewPrefab, Vector3.zero, Quaternion.identity);
 
-        var playerMoveModel = new PlayerMoveModel();
-        var playerWeaponModel = new PlayerWeaponModel();
-        var playerModel = new PlayerModel(playerMoveModel, playerWeaponModel);
+        //var playerMoveModel = new PlayerMoveModel();
+        //var playerWeaponModel = new PlayerWeaponModel();
+        //var playerModel = new PlayerModel(playerMoveModel, playerWeaponModel);
 
-        playerPresenter = new PlayerPresenter(
-            playerModel,
-            playerView,
-            new PlayerMoveStateMachine(playerMoveModel, inputData),
-            new PlayerWeaponStateMachine(playerWeaponModel, weaponInventory, inputData));
-        playerPresenter.Initialize();
-        zombieTargets.AddTarget(playerView);
+        //playerPresenter = new PlayerPresenter(
+        //    playerModel,
+        //    playerView,
+        //    new PlayerMoveStateMachine(playerMoveModel, inputData),
+        //    new PlayerWeaponStateMachine(playerWeaponModel, weaponInventory, inputData));
+        //playerPresenter.Initialize();
+
+        //zombieTargets.AddTarget(playerView);
 
         zombieSpawner.SpawnRandomZombieInRandomPosition();
+        //zombieSpawner.SpawnRandomZombieInRandomPosition();
     }
 
     private void OnDestroy()

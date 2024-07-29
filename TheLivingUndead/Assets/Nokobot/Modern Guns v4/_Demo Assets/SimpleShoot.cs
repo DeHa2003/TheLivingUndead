@@ -44,9 +44,9 @@ public class SimpleShoot : MonoBehaviour
 
         gunAnimator.SetTrigger("Fire");
 
-        if (!bulletPrefab) return;
+        //if (!bulletPrefab) return;
 
-        Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
+        //Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation).GetComponent<Rigidbody>().AddForce(barrelLocation.forward * shotPower);
 
     }
 

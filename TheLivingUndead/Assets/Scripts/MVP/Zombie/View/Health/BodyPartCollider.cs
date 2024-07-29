@@ -1,56 +1,46 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
 public class BodyPartCollider : MonoBehaviour, IGetDirectionDamage
 {
+    [SerializeField] private BodyPartConfig config;
     [SerializeField] private TwoBoneIKConstraint twoBoneIK;
     [SerializeField] private float blendOutDuration;
-    private BodyPart bodyPart;
-    public void Initialize(BodyPart bodyPart)
+
+    private ColliderSignalsListener signalListener;
+    private IEnumerator reloadDirection;
+
+    public void Initialize(ColliderSignalsListener signalListener)
     {
-        this.bodyPart = bodyPart;
+        this.signalListener = signalListener;
     }
-    public void TakeDamage(Vector3 point, Vector3 direction, float damage)
+
+    public void TakeDirection(Vector3 point, Vector3 direction)
     {
-        //switch (bodyPart)
-        //{
-        //    case BodyPart.LeftHand:
-        //        Debug.Log("попадание в левую руку");
-        //        break;
+        signalListener?.TakeDirection(point, direction);
 
-        //    case BodyPart.RightHand:
-        //        Debug.Log("попадание в правую руку");
-        //        break;
-
-        //    case BodyPart.LeftFoot:
-        //        Debug.Log("попадание в левую ногу");
-        //        break;
-
-        //    case BodyPart.RightFoot:
-        //        Debug.Log("попадание в правую ногу");
-        //        break;
-
-        //    case BodyPart.Head:
-        //        Debug.Log("попадание в голову");
-        //        break;
-        //}
-
-        Debug.Log("HJHHJH");
-
-        Vector3 targetPosition = point + direction * 0.7f;
-        twoBoneIK.data.target.position = targetPosition;
-
-        StartCoroutine(Test());
+        ActivateReloadDirection(point, direction);
     }
 
     public void TakeDamage(float damage)
     {
-        //throw new System.NotImplementedException();
+        //signalListener?.TakeChanceFall()
+        signalListener?.TakeDamage(damage * config.DamageMultiplayer);
     }
 
-    private IEnumerator Test()
+    private void ActivateReloadDirection(Vector3 point, Vector3 direction)
+    {
+        Vector3 targetPosition = point + direction * 0.7f;
+        twoBoneIK.data.target.position = targetPosition;
+
+        if (reloadDirection != null)
+            StopCoroutine(reloadDirection);
+
+        StartCoroutine(reloadDirection = ReloadDirection_Coroutine());
+    }
+
+    private IEnumerator ReloadDirection_Coroutine()
     {
         twoBoneIK.weight = 1;
 

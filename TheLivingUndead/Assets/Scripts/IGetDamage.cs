@@ -9,7 +9,7 @@ public interface IGetDamage
 
 public interface IGetDirectionDamage : IGetDamage
 {
-    void TakeDamage(Vector3 point, Vector3 hitDirection, float damage);
+    void TakeDirection(Vector3 point, Vector3 hitDirection);
 }
 
 public interface ITarget : IGetDamage
