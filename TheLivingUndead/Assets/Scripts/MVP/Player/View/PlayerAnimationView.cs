@@ -83,7 +83,7 @@ public class PlayerAnimationView : MonoBehaviour
         currentWeaponsConstraints = weaponsConstraints.GetWeaponsConstraints(weaponType);
         weaponsConstraints.ActivateWeaponConstraints(currentWeaponsConstraints);
 
-        Debug.Log("Выбор аниации по типу оружия - " + weaponType);
+        //Debug.Log("Выбор аниации по типу оружия - " + weaponType);
 
         switch (weaponType)
         {

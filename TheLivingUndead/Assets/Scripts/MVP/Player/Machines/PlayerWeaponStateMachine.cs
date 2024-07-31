@@ -82,7 +82,7 @@ public class PlayerWeaponStateMachine : MonoBehaviour
                 currentIndex = 0;
             }
 
-            Debug.Log("Ёкипирован - " + weaponInventory.weaponsData[currentIndex].weaponName);
+            //Debug.Log("Ёкипирован - " + weaponInventory.weaponsData[currentIndex].weaponName);
             SetWeaponData(weaponInventory.weaponsData[currentIndex]);
         }
     }

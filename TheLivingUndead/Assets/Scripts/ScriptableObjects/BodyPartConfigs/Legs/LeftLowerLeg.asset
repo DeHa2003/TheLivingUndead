@@ -15,3 +15,4 @@ MonoBehaviour:
   bodyPart: 2
   damageMultiplayer: 0.2
   criticalHitChance: 3
+  fallChance: 80

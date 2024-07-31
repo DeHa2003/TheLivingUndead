@@ -14,18 +14,19 @@ public class ZombieAnimationView : MonoBehaviour
     private const string WALK = "Walking";
     private const string RUN = "Running";
     private const string RISE = "Rise";
-    private const string DIE = "Die";
-    private List<string> moveParams = new List<string> { WALK, RUN, RISE ,DIE };
+    private List<string> moveParams = new List<string> { WALK, RUN, RISE };
+
+    private string currentAnim;
 
     public void SetMoveType(ZombieMoveType zombieMoveType)
     {
         switch (zombieMoveType)
         {
             case ZombieMoveType.Walk:
-                SetMovementState(WALK);
+                SetMovementState(currentAnim = WALK);
                 break;
             case ZombieMoveType.Run:
-                SetMovementState(RUN);
+                SetMovementState(currentAnim = RUN);
                 break;
         }
     }
@@ -51,11 +52,12 @@ public class ZombieAnimationView : MonoBehaviour
 
     public void Rise()
     {
-        SetMovementState(RISE);
+        animator.SetTrigger(RISE);
     }
 
     public void ActivateAnimator(bool activate)
     {
+        if (activate == false) animator.SetBool(currentAnim, false);
         animator.enabled = activate;
     }
 

@@ -17,7 +17,7 @@ public class MoveWalkState : IMoveState
 
     public void EnterState()
     {
-        Debug.Log("Активация состояния - WALK");
+        //Debug.Log("Активация состояния - WALK");
 
         inputData.OnMove += moveModel.SetMove;
         inputData.OnRotate += moveModel.SetRotate;
@@ -40,7 +40,7 @@ public class MoveWalkState : IMoveState
         inputData.OnCrouch -= ActivateCrouchState;
         inputData.OnStartRun -= ActivateRunState;
 
-        Debug.Log("Деактивация состояния - WALK");
+        //Debug.Log("Деактивация состояния - WALK");
     }
 
     private void ActivateCrouchState()

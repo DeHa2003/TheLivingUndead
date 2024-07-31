@@ -73,14 +73,16 @@ public class ZombieView : MonoBehaviour
 
     public void Fall()
     {
+        Debug.Log("Падение");
         animationView.ActivateAnimator(false);
         ragdollView.ActivateRagdoll();
     }
 
     public void StartRise()
     {
-        ragdollView.DeactivateRagdoll();
+        Debug.Log("Старт поднятия");
         animationView.ActivateAnimator(true);
+        ragdollView.DeactivateRagdoll();
         animationView.Rise();
     }
 
@@ -111,7 +113,7 @@ public class ZombieView : MonoBehaviour
         remove { animSignalsListener.OnAttackEvent -= value; }
     }
 
-    public event Action OnRiseEvent
+    public event Action OnRiseUpEndEvent
     {
         add { animSignalsListener.OnRiseUpEvent += value; }
         remove { animSignalsListener.OnRiseUpEvent -= value; }
@@ -121,6 +123,12 @@ public class ZombieView : MonoBehaviour
     {
         add { animSignalsListener.OnFootstepEvent += value; }
         remove { animSignalsListener.OnFootstepEvent -= value; }
+    }
+
+    public event Action<float> OnChanceFall
+    {
+        add { colliderSignalsListener.OnTakeChanceFall += value; }
+        remove { colliderSignalsListener.OnTakeChanceFall -= value; }
     }
 
     #endregion

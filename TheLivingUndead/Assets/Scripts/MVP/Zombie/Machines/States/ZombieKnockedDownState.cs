@@ -5,23 +5,26 @@ using UnityEngine;
 public class ZombieKnockedDownState : IZombieState
 {
     private ZombieActionModel zombieActionModel;
-    private IZombieStateSwitcher stateSwitcher;
+    private ZombieMoveModel moveModel;
 
-    public ZombieKnockedDownState(IZombieStateSwitcher stateSwitcher, ZombieActionModel zombieActionModel)
+    public ZombieKnockedDownState(ZombieActionModel zombieActionModel, ZombieMoveModel moveModel)
     {
-        this.stateSwitcher = stateSwitcher;
         this.zombieActionModel = zombieActionModel;
+        this.moveModel = moveModel;
     }
 
     public void EnterState()
     {
+        Debug.Log("Активация состояния - KNOCKED DOWN");
+
+        moveModel.SetMoveSpeed(0);
         zombieActionModel.Fall();
         ActivateStartRise();
     }
 
     public void ExitState()
     {
-        
+        Debug.Log("Деактивация состояния - KNOCKED DOWN");
     }
 
     public void UpdateState()

@@ -23,8 +23,9 @@ public class ZombiePresenter
 
     private void ActivateEvents()
     {
-        zombieModel.HealthModel.OnDie += Die;
+        zombieModel.HealthModel.OnDie += ActivateDieState;
 
+        ActivateViewSignals();
         ActivateMoveEvents();
         ActivateHealthEvents();
         ActivateOthersActionEvents();
@@ -32,12 +33,37 @@ public class ZombiePresenter
 
     private void DeactivateEvents()
     {
-        zombieModel.HealthModel.OnDie -= Die;
+        zombieModel.HealthModel.OnDie -= ActivateDieState;
 
+        DeactivateViewSignals();
         DeactivateMoveEvents();
         DeactivateHealthEvents();
         DeactivateOthersActionEvents();
     }
+
+    #region ViewSignals
+
+    public void ActivateViewSignals()
+    {
+        zombieView.OnAttackEvent += zombieModel.ActionModel.Attack;
+        zombieView.OnFootstepEvent += zombieModel.ActionModel.Footstep;
+        zombieView.OnRiseUpEndEvent += zombieModel.ActionModel.EndRise;
+        zombieView.OnTakeDamageEvent += zombieModel.HealthModel.TakeDamage;
+        zombieView.OnChanceFall += ActivateKnockedDownState;
+    }
+
+    public void DeactivateViewSignals()
+    {
+        zombieView.OnAttackEvent -= zombieModel.ActionModel.Attack;
+        zombieView.OnFootstepEvent -= zombieModel.ActionModel.Footstep;
+        zombieView.OnRiseUpEndEvent -= zombieModel.ActionModel.EndRise;
+        zombieView.OnTakeDamageEvent -= zombieModel.HealthModel.TakeDamage;
+        zombieView.OnChanceFall += ActivateKnockedDownState;
+    }
+
+    #endregion
+
+    #region Move
 
     private void ActivateMoveEvents()
     {
@@ -47,25 +73,6 @@ public class ZombiePresenter
         zombieModel.MoveModel.OnMoveType += zombieView.SetMoveType;
     }
 
-    private void ActivateHealthEvents()
-    {
-        zombieView.OnTakeDamageEvent += zombieModel.HealthModel.TakeDamage;
-
-        zombieModel.HealthModel.OnChangedHealth += zombieView.ChangeHealth;
-    }
-
-    private void ActivateOthersActionEvents()
-    {
-        zombieView.OnAttackEvent += zombieModel.ActionModel.Attack;
-        zombieView.OnRiseEvent += RiseUp;
-
-        zombieModel.ActionModel.OnStartAttack += zombieView.StartAttack;
-        zombieModel.ActionModel.OnEndAttack += zombieView.EndAttack;
-        zombieModel.ActionModel.OnFall += zombieView.Fall;
-        zombieModel.ActionModel.OnStartRise += zombieView.StartRise;
-    }
-
-
     private void DeactivateMoveEvents()
     {
         zombieModel.MoveModel.OnMoveTo -= zombieView.MoveTo;
@@ -74,36 +81,70 @@ public class ZombiePresenter
         zombieModel.MoveModel.OnMoveType -= zombieView.SetMoveType;
     }
 
+    #endregion
+
+    #region Health
+
+    private void ActivateHealthEvents()
+    {
+        zombieModel.HealthModel.OnChangedHealth += zombieView.ChangeHealth;
+    }
+
     private void DeactivateHealthEvents()
     {
-        zombieView.OnTakeDamageEvent -= zombieModel.HealthModel.TakeDamage;
         zombieModel.HealthModel.OnChangedHealth -= zombieView.ChangeHealth;
+    }
+
+    #endregion
+
+    #region OthersActions
+
+    private void ActivateOthersActionEvents()
+    {
+        zombieModel.ActionModel.OnStartAttack += zombieView.StartAttack;
+        zombieModel.ActionModel.OnEndAttack += zombieView.EndAttack;
+        zombieModel.ActionModel.OnFall += zombieView.Fall;
+        zombieModel.ActionModel.OnStartRise += zombieView.StartRise;
+
+        zombieModel.ActionModel.OnEndRise += ActivateIdleState;
     }
 
     private void DeactivateOthersActionEvents()
     {
-        zombieView.OnAttackEvent -= zombieModel.ActionModel.Attack;
-        zombieView.OnRiseEvent -= RiseUp;
-
-
         zombieModel.ActionModel.OnStartAttack -= zombieView.StartAttack;
         zombieModel.ActionModel.OnEndAttack -= zombieView.EndAttack;
         zombieModel.ActionModel.OnFall -= zombieView.Fall;
         zombieModel.ActionModel.OnStartRise -= zombieView.StartRise;
+
+        zombieModel.ActionModel.OnEndRise -= ActivateIdleState;
     }
+
+    #endregion
 
     public void Update()
     {
         zombieMachine.UpdateState();
     }
 
-
-    private void RiseUp()
+    private void ActivateKnockedDownState(float chance)
     {
-        zombieMachine.SetZombieState(zombieMachine.GetZombieState<ZombieIdleState>());
+        float random = Random.Range(0, 100);
+
+        Debug.Log("Шанс активации падения - " + chance);
+
+        if(random < chance)
+        {
+            zombieMachine.SetZombieState(zombieMachine.GetZombieState<ZombieKnockedDownState>());
+        }
     }
 
-    private void Die()
+
+    private void ActivateIdleState()
+    {
+        zombieMachine.SetZombieState(zombieMachine.GetZombieState<ZombiePursueState>());
+    }
+
+    private void ActivateDieState()
     {
         zombieMachine.SetZombieState(zombieMachine.GetZombieState<ZombieDieState>());
         zombieView.Destroy();

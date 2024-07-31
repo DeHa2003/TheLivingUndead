@@ -14,6 +14,7 @@ public class BodyPartConfig : ScriptableObject
     public BodyPart BodyPart => bodyPart;
     public float DamageMultiplayer => damageMultiplayer;
     public float CriticalHitChance => criticalHitChance;
+    public float FallChance => fallChance;
 }
 
 public enum BodyPart

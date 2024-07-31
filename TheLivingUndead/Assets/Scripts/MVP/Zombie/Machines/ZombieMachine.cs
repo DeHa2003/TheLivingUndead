@@ -28,6 +28,7 @@ public class ZombieMachine : IZombieStateSwitcher
     public void InitializeStates() 
     {
         states[typeof(ZombieIdleState)] = new ZombieIdleState(this, zombieModel.MoveModel, zombieTargets);
+        states[typeof(ZombieKnockedDownState)] = new ZombieKnockedDownState(zombieModel.ActionModel, zombieModel.MoveModel);
         states[typeof(ZombieWanderState)] = new ZombieWanderState(this, zombieModel.MoveModel, zombieTargets, pointGenerator);
         states[typeof(ZombiePursueState)] = new ZombiePursueState(this, zombieModel.MoveModel, zombieTargets);
         states[typeof(ZombieAttackState)] = new ZombieAttackState(this, zombieModel.MoveModel, zombieModel.ActionModel, zombieTargets);

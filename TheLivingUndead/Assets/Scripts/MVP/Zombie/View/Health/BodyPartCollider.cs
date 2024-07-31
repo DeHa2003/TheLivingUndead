@@ -26,6 +26,7 @@ public class BodyPartCollider : MonoBehaviour, IGetDirectionDamage
     public void TakeDamage(float damage)
     {
         //signalListener?.TakeChanceFall()
+        signalListener?.TakeChanceFall(config.FallChance);
         signalListener?.TakeDamage(damage * config.DamageMultiplayer);
     }
 

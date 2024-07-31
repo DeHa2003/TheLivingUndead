@@ -10,6 +10,8 @@ public class ZombieActionModel : MonoBehaviour
     public event Action OnAttack;
     public event Action OnDie;
 
+    public event Action OnFootstep;
+
     public event Action OnFall;
     public event Action OnStartRise;
     public event Action OnEndRise;
@@ -24,6 +26,10 @@ public class ZombieActionModel : MonoBehaviour
         OnEndAttack?.Invoke();
     }
 
+    public void Footstep()
+    {
+        OnFootstep?.Invoke();
+    }
 
     public void Attack()
     {

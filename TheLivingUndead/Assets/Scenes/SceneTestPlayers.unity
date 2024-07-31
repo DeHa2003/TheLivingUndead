@@ -319,6 +319,80 @@ Transform:
   m_Father: {fileID: 689251160}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &67682982
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1542735908104272816, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_Name
+      value: ZombiePrefab_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.467734
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.167149
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803165991960356248, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:LeftFoot'\n\tTransform 'mixamorig:Spine1'\n\tTransform
+        'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
+        'mixamorig:RightFoot'\n\tTransform 'mixamorig:Head'\n\tTransform 'mixamorig:LeftUpLeg'\n\tTransform
+        'mixamorig:LeftArm'\n\tTransform 'mixamorig:RightHand'\n\tand more ..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566045092226615835, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566045092226615835, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
 --- !u!1 &96707764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,80 +1711,6 @@ Transform:
   m_Father: {fileID: 547511872}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &619019070
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1542735908104272816, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_Name
-      value: ZombiePrefab_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2171639432635687178, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2803165991960356248, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'mixamorig:LeftFoot'\n\tTransform 'mixamorig:Spine1'\n\tTransform
-        'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
-        'mixamorig:RightFoot'\n\tTransform 'mixamorig:Head'\n\tTransform 'mixamorig:LeftUpLeg'\n\tTransform
-        'mixamorig:LeftArm'\n\tTransform 'mixamorig:RightHand'\n\tand more ..."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566045092226615835, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566045092226615835, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
 --- !u!1 &636145278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,23 +2919,6 @@ MonoBehaviour:
       x: 1
       y: 1
       z: 1
---- !u!1 &918812272 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1542735908104272816, guid: 2cd19c9385ab77c4c99357579d485b4f, type: 3}
-  m_PrefabInstance: {fileID: 619019070}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &918812278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918812272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f95c8dd5b475f34588a2a67fa922f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &960097231
 GameObject:
   m_ObjectHideFlags: 0
