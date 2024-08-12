@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IWeaponState
 {
+    public bool IsAiming();
     public void EnterState();
     public void ExitState();
     public void SetWeapon(WeaponData weapon);

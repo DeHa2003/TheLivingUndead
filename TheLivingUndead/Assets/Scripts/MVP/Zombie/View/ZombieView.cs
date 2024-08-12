@@ -74,14 +74,14 @@ public class ZombieView : MonoBehaviour
     public void Fall()
     {
         Debug.Log("Падение");
-        animationView.ActivateAnimator(false);
+        animationView.DeactivateAnumator();
         ragdollView.ActivateRagdoll();
     }
 
     public void StartRise()
     {
         Debug.Log("Старт поднятия");
-        animationView.ActivateAnimator(true);
+        animationView.ActivateAnimator();
         ragdollView.DeactivateRagdoll();
         animationView.Rise();
     }

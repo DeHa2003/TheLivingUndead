@@ -23,6 +23,11 @@ public class PlayerRifleWeaponState : IWeaponState
 
     }
 
+    public bool IsAiming()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void SetWeapon(WeaponData weapon)
     {
 

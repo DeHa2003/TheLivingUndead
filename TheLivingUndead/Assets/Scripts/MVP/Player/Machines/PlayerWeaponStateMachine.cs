@@ -30,6 +30,9 @@ public class PlayerWeaponStateMachine : MonoBehaviour
         weaponStates[typeof(PlayerAutomatWeaponState)] = new PlayerAutomatWeaponState(playerWeaponModel, inputData);
         weaponStates[typeof(PlayerRifleWeaponState)] = new PlayerRifleWeaponState(playerWeaponModel, inputData);
 
+
+        SetWeaponData(weaponInventory.weaponsData[0]);
+
         Activate();
     }
 
@@ -69,7 +72,7 @@ public class PlayerWeaponStateMachine : MonoBehaviour
 
     private void ChooseState(float scrollWheel)
     {
-        if (scrollWheel != 0)
+        if (scrollWheel != 0 && currentWeaponState?.IsAiming() == false)
         {
             currentIndex += scrollWheel > 0 ? 1 : -1;
 

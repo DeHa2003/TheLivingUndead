@@ -54,4 +54,9 @@ public class PlayerNoneWeaponState : IWeaponState
     {
 
     }
+
+    public bool IsAiming()
+    {
+        return false;
+    }
 }

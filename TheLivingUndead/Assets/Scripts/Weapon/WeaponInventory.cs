@@ -6,7 +6,6 @@ using UnityEngine;
 public class WeaponInventory : MonoBehaviour
 {
     public List<WeaponData> weaponsData;
-    private int currentIndex = 0;
 
     public void AddData(WeaponData weaponData)
     {

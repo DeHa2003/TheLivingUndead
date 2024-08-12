@@ -143,4 +143,9 @@ public class PlayerPistolWeaponState : IWeaponState
         weaponData.weaponCurrentBullet = weaponData.weaponMaxBullets;
         EndReload();
     }
+
+    public bool IsAiming()
+    {
+        return isAiming;
+    }
 }

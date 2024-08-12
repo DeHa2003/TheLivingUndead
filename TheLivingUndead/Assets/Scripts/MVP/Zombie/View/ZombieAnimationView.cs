@@ -23,10 +23,12 @@ public class ZombieAnimationView : MonoBehaviour
         switch (zombieMoveType)
         {
             case ZombieMoveType.Walk:
-                SetMovementState(currentAnim = WALK);
+                currentAnim = WALK;
+                SetMovementState(currentAnim);
                 break;
             case ZombieMoveType.Run:
-                SetMovementState(currentAnim = RUN);
+                currentAnim = RUN;
+                SetMovementState(currentAnim);
                 break;
         }
     }
@@ -55,10 +57,15 @@ public class ZombieAnimationView : MonoBehaviour
         animator.SetTrigger(RISE);
     }
 
-    public void ActivateAnimator(bool activate)
+    public void ActivateAnimator()
     {
-        if (activate == false) animator.SetBool(currentAnim, false);
-        animator.enabled = activate;
+        animator.enabled = true;
+    }
+
+    public void DeactivateAnumator()
+    {
+        animator.SetBool(currentAnim, false);
+        animator.enabled = false;
     }
 
     private void SetMovementState(string name)
